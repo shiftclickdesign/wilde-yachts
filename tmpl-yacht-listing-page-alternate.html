@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="js/sheetsee.js"></script>
+<script type="text/javascript" src="js/tabletop.js"></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+<link rel="stylesheet" type="text/css" href="css/wilde-yachts.css"/>
+<title>Wilde Yachts Brokered Boats</title>
+</head>
+<body>
+
+<p>
+  <input id="brokeredBoatsFilter" type="text" placeholder="filter by..">
+</p>
+
+<div id="brokeredBoats">
+  <div>Loading Yacht Listings...</div>
+</div>
+
+<script id="brokeredBoats_template" type="text/html">
+  {{#rows}}
+  <div class="detail categorized">
+    <div class="tab description">
+      <h2>Description</h2>
+      <div class="field">
+        <label>Listing Number</label>
+        <span>{{listing-number}}</span>
+      </div>
+
+      <div class="field">
+        <label>Title</label>
+        <span>{{title}}</span>
+      </div>
+
+      <div class="field">
+        <label>Year</label>
+        <span>{{year}}</span>
+      </div>
+
+      <div class="field">
+        <label>Designer</label>
+        <span>{{designer}}</span>
+      </div>
+
+      <div class="field">
+        <label>Builder</label>
+        <span>{{builder}}</span>
+      </div>
+
+      <div class="field">
+        <label>Type</label>
+        <span>{{type}}</span>
+      </div>
+
+      <div class="field">
+        <label>Color</label>
+        <span>{{color}}</span>
+      </div>
+
+      <div class="field">
+        <label>Hull Material</label>
+        <span>{{hull-material}}</span>
+      </div>
+
+      <div class="field">
+        <label>Location</label>
+        <span>{{location}}</span>
+      </div>
+
+      <div class="field">
+        <label>Condition</label>
+        <span>{{condition}}</span>
+      </div>
+
+      <div class="field">
+        <label>Engines</label>
+        <span>{{engines}}</span>
+      </div>
+
+      <div class="field">
+        <label>Fuel Type</label>
+        <span>{{fuel-type}}</span>
+      </div>
+
+      <div class="field">
+        <label>Price</label>
+        <span>{{price}}</span>
+      </div>
+
+      <div class="field">
+        <label>Description</label>
+        <span>{{description}}</span>
+      </div>
+    </div>
+
+    <div class="tab full-specification">
+      <h2>Full Specification</h2>
+      <h3>Dimensions</h3>
+
+      <div class="field">
+        <label>Length</label>
+        <span>{{length}}</span>
+      </div>
+
+      <div class="field">
+        <label>Beam</label>
+        <span>{{beam}}</span>
+      </div>
+
+      <div class="field">
+        <label>Draft</label>
+        <span>{{draft}}</span>
+      </div>
+
+      <div class="field">
+        <label>Displacement</label>
+        <span>{{displacement}}</span>
+      </div>
+
+      <h3>Engines</h3>
+      <div class="field">
+        <label>Horsepower</label>
+        <span>{{horsepower}}</span>
+      </div>
+
+      <div class="field">
+        <label>Cruising Speed</label>
+        <span>{{cruising-speed}}</span>
+      </div>
+
+      <div class="field">
+        <label>Maximum Speed</label>
+        <span>{{maximum-speed}}</span>
+      </div>
+
+      <h3>Tanks</h3>
+      <div class="field">
+        <label>Fuel Tankage</label>
+        <span>{{fuel-tankage}}</span>
+      </div>
+
+      <div class="field">
+        <label>Water Tankage</label>
+        <span>{{water-tankage}}</span>
+      </div>
+
+      <div class="field">
+        <label>Holding Tankage</label>
+        <span>{{holding-tankage}}</span>
+      </div>
+
+      <h3>Accomodations</h3>
+      <div class="field">
+        <label>Accomodations</label>
+        <span>{{accomodations}}</span>
+      </div>
+
+      <div class="field">
+        <label>Galley</label>
+        <span>{{galley}}</span>
+      </div>
+
+      <h3>Equipment</h3>
+      <div class="field">
+        <label>Electronics</label>
+        <span>{{electronics}}</span>
+      </div>
+
+      <div class="field">
+        <label>Electrical</label>
+        <span>{{electrical}}</span>
+      </div>
+
+      <div class="field">
+        <label>Inside Equipment</label>
+        <span>{{inside-equipment}}</span>
+      </div>
+
+      <div class="field">
+        <label>Outside Equipment</label>
+        <span>{{outside-equipment}}</span>
+      </div>
+
+      <div class="field">
+        <label>Additional</label>
+        <span>{{additional}}</span>
+      </div>
+    </div>
+  </div>
+  {{/rows}}
+</script>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+	var URL = "1UxmMWCMYDpVzYsQ7jIOfarvuERtQiZnMfM1TMeWRYKA"
+	Tabletop.init( { key: URL, callback: myData, simpleSheet: true } )
+})
+
+function myData(googleData) {
+	var tableOptions = {
+			"data": googleData,
+			"pagination": 200,
+			"tableDiv": "#brokeredBoats",
+			"filterDiv":"#brokeredBoatsFilter",
+			"templateID": "brokeredBoats"
+			}
+
+	Sheetsee.makeTable(tableOptions)
+	Sheetsee.initiateTableFilter(tableOptions)
+}
+</script>
+
+</body>
+</html>
