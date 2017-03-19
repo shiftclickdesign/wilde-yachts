@@ -1,7 +1,27 @@
-div.detail,
-div.tab {
+.wilde-tab {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
-  width: 90%;
+  &.horizontal {flex-direction: row;}
+
+  &:before {
+    display: none;
+    position: absolute;
+    background: red;
+    padding: 0.5em;
+    content: 'Inspect This';
+    font-family: sans-serif;
+    font-size: 0.5em;
+    line-height: 0.5em;
+    color: white;
+    text-transform: uppercase;
+    margin-top: -2em;
+  }
+
+  .wilde-field-group {
+    flex: 1 1 auto;
+  }
 
   h3 {
     margin: 1.5em 0 0.75em 0;
@@ -10,6 +30,7 @@ div.tab {
   }
 
   .field {
+    flex: 1 1 auto;
     margin-bottom: 0.25em;
     border-bottom: 1px solid #DDD;
     white-space: nowrap;
@@ -21,16 +42,16 @@ div.tab {
     display: inline-block;
     white-space: pre-wrap;
     vertical-align: top;
-    line-height: 1.25em;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
   }
 
   label {
     width: 160px;
     font-weight: bold;
   }
+}
 
-  span {
-    padding-bottom: 2px;
-    margin-bottom: 2px;
-  }
+@media screen and (max-width: 767px) {
+  .wilde-tab.horizontal {flex-direction: column;}
 }
